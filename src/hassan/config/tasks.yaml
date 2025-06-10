@@ -1,0 +1,32 @@
+interpret_query:
+  description: >
+    Interpret this user query into a structured plan including operations like:
+      filtering, grouping, aggregating, or calculating
+      User query: '{user_query}'
+  expected_output: >
+    Structured plan in Python-like pseudocode or JSON for analysis
+  agent: query_interpreter
+
+
+validate_plan:
+    description: >
+      Validate and optimize the analysis plan before execution
+    expected_output: >
+      A validated and clean JSON analysis plan
+    agent: strategic_planner
+
+analyze_data:
+    description: >
+      Given the structured plan, use Pandas to perform the analysis on the provided DataFrame.
+      Output the result or summary.
+    expected_output: >
+      Analysis result as dictionary or string
+    agent: data_analyzer
+
+
+format_response:
+    description: >
+      Take the analysis result and return a clean, user-friendly answer.
+    expected_output: >
+      Human Readable answer with complete spacing and  summarizing the result
+    agent: responder
